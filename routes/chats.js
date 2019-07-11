@@ -10,7 +10,7 @@ router.get("/short", function(req, res) {
 		chats.map(chat => ({
 			...chat,
 			users: undefined,
-			lastMessage: lastMessage(chat)
+			lastMessage: lastMessage(chat),
 		}))
 	);
 });
@@ -22,7 +22,7 @@ function lastMessage(chat) {
 
 	return msg.reduce((acc, msg) => {
 		return acc.sendDate > msg.sendDate ? acc : msg;
-	}).content;
+	});
 }
 
 module.exports = router;
